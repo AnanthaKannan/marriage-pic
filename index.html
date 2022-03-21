@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+    <button id="pre" >PREVIOUS</button>
+    <button id="next" onclick="onHandleNext()" >NEXT</button>
+    <img id='imshow' src="https://raw.githubusercontent.com/AnanthaKannan/marriage-pic/main/_DSC7779RESIZE.JPG" 
+    alt="This Image not there, can you please click next or PREVIOUS" 
+    srcset="">
+
+    <script>
+      const [min, max] = [7411, 8078];
+      let imgId = min; //_DSC7405RESIZE
+  
+      const img = document.getElementById('imshow');
+      const next = document.getElementById('next');
+      const pre = document.getElementById('pre');
+  
+      const onHandleNext = () =>{
+        imgId = imgId + 1; //Math.floor(Math.random() * (max - min + 1)) + min;
+        if(imgId > max){
+          imgId = min
+        }
+        console.log(imgId)
+        img.src = `https://raw.githubusercontent.com/AnanthaKannan/marriage-pic/main/_DSC${imgId}RESIZE.JPG`;
+      }
+  
+      pre.addEventListener('click', () => {
+        imgId = imgId - 1; //Math.floor(Math.random() * (max - min + 1)) + min;
+        if(imgId < min){
+          imgId = max;
+        }
+        img.src = `https://raw.githubusercontent.com/AnanthaKannan/marriage-pic/main/_DSC${imgId}RESIZE.JPG`;
+      });
+  
+    </script>
+</body>
+</html>
